@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BG Weather</string>
+    <string name="text_main_activity">Texto por defecto</string>
+    <string name="navigation_drawer_open">Abrir cajón de navegacion</string>
+    <string name="navigation_drawer_close">Cerrar cajón de navegacion</string>
+    <string name="action_settings">Configuración</string>
+    <string name="get_from_gallery">Obtener imagen de la galería</string>
+    <string name="take_photo">Tomar una foto</string>
+    <string name="app_sidebar_title">Background Weather</string>
+    <string name="share_bar">Compartir</string>
+    <string name="share_with">Compartir con...</string>
+</resources>
