@@ -10,4 +10,7 @@
     <string name="app_sidebar_title">Background Weather</string>
     <string name="share_bar">Compartir</string>
     <string name="share_with">Compartir con...</string>
+    <string name="config_zone">Ciudad</string>
+    <string name="welcome_string">Bienvenido a la app</string>
+    <string name="hello_blank_fragment">Hello Blank Fragment</string>
 </resources>

@@ -48,9 +48,10 @@ public class MainActivity extends AppCompatActivity
         content = (FrameLayout) findViewById(R.id.content_fragment);
 
         mainFragment = new MainFragment();
+        optionsFragment = new OptionsFragment();
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.content_fragment, mainFragment).commit();
+                .add(R.id.content_fragment, optionsFragment).commit();
     }
 
     @Override
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_fragment, mainFragment).commit();
         } else if (id == R.id.nav_manage) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_fragment, mainFragment).commit();
+                    .replace(R.id.content_fragment, optionsFragment).commit();
         } else if (id == R.id.nav_share) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_fragment, optionsFragment).commit();
