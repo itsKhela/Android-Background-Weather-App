@@ -13,4 +13,5 @@
     <string name="config_zone">Ciudad</string>
     <string name="welcome_string">Bienvenido a la app</string>
     <string name="hello_blank_fragment">Hello Blank Fragment</string>
+    <string name="share_string">Mira esta app, es genial!</string>
 </resources>

@@ -22,7 +22,15 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="@string/share_with" />
+                android:title="@string/share_with">
+                <activity android:name="ShareActivity">
+                    <intent-filter>
+                        <action android:name="android.intent.action.SEND"/>
+                        <category android:name="android.intent.category.DEFAULT"/>
+                        <data android:mimeType="text/plain"/>
+                    </intent-filter>
+                </activity>
+            </item>
 
         </menu>
     </item>
