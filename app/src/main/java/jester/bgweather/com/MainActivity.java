@@ -10,7 +10,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -54,6 +57,17 @@ public class MainActivity extends AppCompatActivity
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.content_fragment, optionsFragment).commit();
+
+        // TODO: Move this script of button push to mainActivity, not inside fragment.
+        final Button button = (Button) findViewById(R.id.fetch_button);
+        if (button != null) {
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Perform action on click
+                    Toast.makeText(MainActivity.this,"Do something",Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
     }
 

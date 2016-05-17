@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -76,13 +75,7 @@ public class OptionsFragment extends Fragment {
             }
         });*/
 
-        // TODO: Move this script of button push to mainActivity, not inside fragment.
-        final Button button = (Button) findViewById(R.id.fetch_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            }
-        });
+
 
 
 
