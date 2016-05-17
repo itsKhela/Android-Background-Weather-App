@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
+            android:text="@string/city_code"
             android:id="@+id/textView2" />
 
         <EditText
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
+            android:text="@string/zip_code"
             android:id="@+id/textView3" />
 
         <EditText
@@ -38,20 +38,67 @@
             android:ems="10"
             android:id="@+id/editText2" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView4" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="New Button"
-            android:id="@+id/button"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.04" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fetch_weather"
+                android:id="@+id/fetch_button"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/textView4"
+                android:layout_toEndOf="@+id/textView4"
+                android:layout_marginLeft="42dp"
+                android:layout_marginStart="42dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/zone_result"
+                android:id="@+id/textView4"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="42dp"
+                android:layout_marginStart="42dp" />
+        </RelativeLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="197dp"
+            android:id="@+id/listview_forecast"
+            android:layout_weight="1.39" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="106dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button2"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/button3"
+                android:layout_toStartOf="@+id/button3" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button3"
+                android:layout_marginRight="97dp"
+                android:layout_marginEnd="97dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
 
     </LinearLayout>
 </RelativeLayout>

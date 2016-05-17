@@ -11,10 +11,13 @@
     <string name="app_sidebar_title">Background Weather</string>
     <string name="share_bar">Share</string>
     <string name="share_with">Share with...</string>
-    <string name="config_zone">Zone to get weather from:</string>
+    <string name="city_code">City:</string>
     <string name="welcome_string">Welcome to the app</string>
     <string name="share_string">Check this app! It is awesome!</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zip_code">Zip code</string>
+    <string name="fetch_weather">Fetch data</string>
+    <string name="zone_result">Fill in some field</string>
 </resources>
