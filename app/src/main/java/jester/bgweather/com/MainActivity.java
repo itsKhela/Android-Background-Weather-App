@@ -52,22 +52,18 @@ public class MainActivity extends AppCompatActivity
 
         content = (FrameLayout) findViewById(R.id.content_fragment);
 
+
+
         mainFragment = new MainFragment();
         optionsFragment = new OptionsFragment();
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.content_fragment, optionsFragment).commit();
 
-        // TODO: Move this script of button push to mainActivity, not inside fragment.
-        final Button button = (Button) findViewById(R.id.fetch_button);
-        if (button != null) {
-            button.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    // Perform action on click
-                    Toast.makeText(MainActivity.this,"Do something",Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+        // Button fetch data
+
+
+
 
     }
 

@@ -11,7 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,8 +77,16 @@ public class OptionsFragment extends Fragment {
             }
         });*/
 
+        Button button = (Button) rootView.findViewById(R.id.fetch_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
-
+                // Perform action on click
+                Toast.makeText(getActivity(),"Do something",Toast.LENGTH_SHORT).show();
+                FetchWeatherTask weatherTask = new FetchWeatherTask();
+                weatherTask.execute("sevilla");
+            }
+        });
 
 
 
