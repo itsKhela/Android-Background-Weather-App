@@ -14,9 +14,4 @@
         android:id="@+id/textView"
         android:layout_gravity="left|top" />
 
-    <GridView
-        android:layout_width="wrap_content"
-        android:layout_height="519dp"
-        android:id="@+id/gridView"
-        android:layout_gravity="center" />
 </FrameLayout>

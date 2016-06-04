@@ -12,9 +12,11 @@
     <string name="share_with">Compartir con...</string>
     <string name="city_code">Ciudad:</string>
     <string name="welcome_string">Bienvenido a la app</string>
-    <string name="hello_blank_fragment">Hello Blank Fragment</string>
     <string name="share_string">Mira esta app, es genial!</string>
     <string name="zip_code">Código Postal</string>
     <string name="fetch_weather">Consultar</string>
     <string name="zone_result">Rellena algun campo</string>
+    <string name="update_location">Actualizando ubicación...</string>
+    <string name="save_weather">Guardar</string>
+    <string name="get_location">Localizame</string>
 </resources>

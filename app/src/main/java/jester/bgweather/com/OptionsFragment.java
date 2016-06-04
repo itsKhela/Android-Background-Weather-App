@@ -12,8 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +34,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static jester.bgweather.com.R.id.editText;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +43,6 @@ import java.util.List;
 public class OptionsFragment extends Fragment {
 
     private ArrayAdapter<String> mForecastAdapter;
-
 
     public OptionsFragment() {
         // Required empty public constructor
@@ -77,18 +82,49 @@ public class OptionsFragment extends Fragment {
             }
         });*/
 
-        Button button = (Button) rootView.findViewById(R.id.fetch_button);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        final EditText cityText = (EditText) rootView.findViewById(R.id.editText);
+        final EditText zipText = (EditText) rootView.findViewById(R.id.editText2);
+
+
+
+        Button buttonFetch = (Button) rootView.findViewById(R.id.fetch_button);
+        buttonFetch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                // Perform action on click
-                Toast.makeText(getActivity(),"Do something",Toast.LENGTH_SHORT).show();
                 FetchWeatherTask weatherTask = new FetchWeatherTask();
-                weatherTask.execute("sevilla");
+                String res = "";
+
+                if(cityText.getText().length() != 0){
+                    res = cityText.getText().toString();
+                    if(zipText.getText().length() != 0){
+                        res.concat(","+zipText.getText().toString());
+                    }
+                }
+                Toast.makeText(getActivity(),getString(R.string.update_location)+" "+res,Toast.LENGTH_SHORT).show();
+                weatherTask.execute(res);
             }
         });
 
+        Button buttonSave = (Button) rootView.findViewById(R.id.save_button);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
+                //TODO: Save the location variable.
+                Toast.makeText(getActivity(),"Save",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        Button buttonGetLocation = (Button) rootView.findViewById(R.id.save_button);
+        buttonGetLocation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                //TODO: Get location from actual place.
+                Toast.makeText(getActivity(),"Location is this: ****",Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         // Inflate the layout for this fragment
         return rootView;
