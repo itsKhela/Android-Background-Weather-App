@@ -124,8 +124,11 @@ public class OptionsFragment extends Fragment {
         buttonGetLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+
+                String strLoc = (sharedPref.getString("location", ""));
+
                 //TODO: Get location from actual place.
-                Toast.makeText(getActivity(),"Location is this: ****",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Location is this: "+strLoc,Toast.LENGTH_SHORT).show();
 
             }
         });
