@@ -4,10 +4,8 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -23,8 +21,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
-import java.util.Calendar;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -34,6 +30,7 @@ public class MainActivity extends AppCompatActivity
 
     MainFragment mainFragment;
     OptionsFragment optionsFragment;
+    GalleryFragment galleryFragment;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -45,6 +42,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -65,16 +63,16 @@ public class MainActivity extends AppCompatActivity
 
         content = (FrameLayout) findViewById(R.id.content_fragment);
 
-         mainFragment = new MainFragment();
+        mainFragment = new MainFragment();
         optionsFragment = new OptionsFragment();
+        galleryFragment = new GalleryFragment();
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.content_fragment, optionsFragment).commit();
+                .add(R.id.content_fragment, mainFragment).commit();
 
         Intent intent = new Intent("CHANGE_WALLPAPER");
         PendingIntent startPIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
         AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarm.setRepeating( AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10, 60000, startPIntent);
 
         sendBroadcast(intent);
 
@@ -90,30 +88,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_camera:
-                getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_fragment, mainFragment).commit();
-            case R.id.nav_gallery:
-                getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_fragment, mainFragment).commit();
-            case R.id.nav_manage:
-                getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_fragment, optionsFragment).commit();
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }*/
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -128,10 +102,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_gallery) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_fragment, mainFragment).commit();
+                    .replace(R.id.content_fragment, galleryFragment).commit();
         } else if (id == R.id.nav_manage) {
             getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_fragment, mainFragment).commit();
+                .replace(R.id.content_fragment, optionsFragment).commit();
         } else if (id == R.id.nav_main) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_fragment, mainFragment).commit();

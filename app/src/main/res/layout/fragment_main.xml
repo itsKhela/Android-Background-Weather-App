@@ -13,9 +13,9 @@
         android:text="@string/update_freq"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/start"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp" />
+        android:layout_marginTop="46dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="112dp"
@@ -25,15 +25,29 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/main_screen"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/textView5"
+        android:layout_alignEnd="@+id/textView5" />
 
-    <EditText
-        android:layout_width="100px"
+    <SeekBar
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="2"
-        android:id="@+id/editText3"
-        android:layout_above="@+id/start"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/seekBar"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:max="120"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/seekBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp" />
 
 </RelativeLayout>

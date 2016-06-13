@@ -17,9 +17,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,8 +32,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static jester.bgweather.com.R.id.editText;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,8 +43,6 @@ public class OptionsFragment extends Fragment {
     public OptionsFragment() {
         // Required empty public constructor
     }
-
-    SharedPreferences sharedPref= getActivity().getSharedPreferences("mypref", 0);
 
 
     @Override
