@@ -1,6 +1,7 @@
 package jester.bgweather.com;
 
 
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,6 +49,8 @@ public class OptionsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    SharedPreferences sharedPref= getActivity().getSharedPreferences("mypref", 0);
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +64,8 @@ public class OptionsFragment extends Fragment {
         // Now that we have some dummy forecast data, create an ArrayAdapter.
         // The ArrayAdapter will take data from a source (like our dummy forecast) and
         // use it to populate the ListView it's attached to.
+        final SharedPreferences sharedPref= getActivity().getSharedPreferences("mypref", 0);
+
         mForecastAdapter =
                 new ArrayAdapter<>(
                         getActivity(), // The current context (this activity)
@@ -110,7 +115,13 @@ public class OptionsFragment extends Fragment {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                //TODO: Save the location variable.
+                String strLoc = String.valueOf(R.id.editText2);
+                //now get Editor
+                SharedPreferences.Editor editor= sharedPref.edit();
+                //put your value
+                editor.putString("location", strLoc);
+                //commits your edits
+                editor.commit();
                 Toast.makeText(getActivity(),"Save",Toast.LENGTH_SHORT).show();
 
             }
@@ -258,7 +269,7 @@ public class OptionsFragment extends Fragment {
                 // http://openweathermap.org/API#forecast
                 //URL url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?q=sevilla&mode=json&units=metric&cnt=7&appid=2f8a775796de87f3e291e27d5743dd0f");
 
-                final String BASE_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?";
+                final String BASE_URL = "http://api.openweathermap.org/data/2.5/forecast?";
                 final String ZONE = "q";
                 final String FORMAT = "mode";
                 final String UNITS = "units";

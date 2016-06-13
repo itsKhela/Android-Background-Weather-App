@@ -19,4 +19,6 @@
     <string name="update_location">Actualizando ubicación...</string>
     <string name="save_weather">Guardar</string>
     <string name="get_location">Localizame</string>
+    <string name="main_screen">Comienzo</string>
+    <string name="update_freq">Frecuencia de actualización en minutos</string>
 </resources>

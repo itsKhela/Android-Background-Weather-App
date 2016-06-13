@@ -4,8 +4,10 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,16 +54,6 @@ public class MainActivity extends AppCompatActivity
                     .build();
         }
 
-
-/*        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -71,23 +65,18 @@ public class MainActivity extends AppCompatActivity
 
         content = (FrameLayout) findViewById(R.id.content_fragment);
 
-
-
-        mainFragment = new MainFragment();
+         mainFragment = new MainFragment();
         optionsFragment = new OptionsFragment();
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.content_fragment, optionsFragment).commit();
 
-        // Button fetch data
+        Intent intent = new Intent("CHANGE_WALLPAPER");
+        PendingIntent startPIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarm.setRepeating( AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 10, 60000, startPIntent);
 
-        AlarmManager alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, MyAlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-        Calendar time = Calendar.getInstance();
-        time.setTimeInMillis(System.currentTimeMillis());
-        time.add(Calendar.MINUTE, 15);
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, 60, time.getTimeInMillis(), pendingIntent);
+        sendBroadcast(intent);
 
     }
 
@@ -142,7 +131,10 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_fragment, mainFragment).commit();
         } else if (id == R.id.nav_manage) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_fragment, optionsFragment).commit();
+                .replace(R.id.content_fragment, mainFragment).commit();
+        } else if (id == R.id.nav_main) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_fragment, mainFragment).commit();
         } else if (id == R.id.nav_share) {
 // Create the text message with a string
             Intent sendIntent = new Intent();

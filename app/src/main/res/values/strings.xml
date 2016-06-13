@@ -21,4 +21,9 @@
     <string name="update_location">Updating location...</string>
     <string name="save_weather">Save</string>
     <string name="get_location">Locate me</string>
+    <string name="main_screen">Start</string>
+    <string name="update_freq">Update time in minutes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

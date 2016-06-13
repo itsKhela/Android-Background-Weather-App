@@ -4,6 +4,7 @@ import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
@@ -11,42 +12,24 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Random;
+
+import util.BitmapUtil;
 
 public class MyAlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        //debug purpose
-        Toast.makeText(context, "Alarm went off", Toast.LENGTH_SHORT).show();
-
-        //todo: convert image to bitmap
-        /*
-        File root = Environment.getExternalStorageDirectory();
-        ImageView IV = (ImageView) findViewById(R.id."image view");
-        Bitmap bMap = BitmapFactory.decodeFile(root+"/images/01.jpg");
-        IV.setImageBitmap(bMap);
-         */
-
-        /*
-        Any of the BitmapFactory.decode* methods should be able to handle standard JPG files.
-        If you post some code it could be easier to see why it won't work
-         */
-
-        String bgFileName = "";
-
-        File root = Environment.getExternalStorageDirectory();
-        Bitmap srcBitmap = BitmapFactory.decodeFile(root+bgFileName);
 
         WallpaperManager wm = WallpaperManager.getInstance(context);
-        int height = wm.getDesiredMinimumHeight();
-        int width = wm.getDesiredMinimumWidth();
+
+        String[] images = {"img0000000.jpg", "img0001000.jpg", "img0002000.jpg", "img0100000.jpg", };
 
         try {
-            wm.setBitmap(Bitmap.createScaledBitmap(srcBitmap, width , height , true));
+            wm.setBitmap(BitmapUtil.getBitmapFromAsset(context, images[new Random().nextInt(images.length)]));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch(IOException ex) {
-            return;
-        }
-
 
     }
 

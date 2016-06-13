@@ -6,8 +6,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <receiver android:name=".MyAlarmReceiver" />
-
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <application
         android:allowBackup="true"
@@ -25,6 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".MyAlarmReceiver" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="CHANGE_WALLPAPER"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
